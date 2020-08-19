@@ -6,31 +6,31 @@ function App() {
     <Container fluid style={{ margin: 0, padding: 0 }}>
       <Row
         noGutters={false}
-        style={{ height: "375px", width: "100%", margin: 0 }}
+        style={{ height: "50vh", width: "100%", margin: 0 }}
       >
         <Col style={{ padding: 0 }}>
           <Button variant="primary" style={{ height: "100%", width: "100%" }}>
-            TRAVEL
+            Travel
           </Button>
         </Col>
         <Col style={{ padding: 0 }}>
           <Button variant="secondary" style={{ height: "100%", width: "100%" }}>
-            RECOMMENDATION
+            Recommendation
           </Button>
         </Col>
       </Row>
       <Row
         noGutters={false}
-        style={{ height: "350px", width: "100%", margin: 0 }}
+        style={{ height: "50vh", width: "100%", margin: 0 }}
       >
         <Col style={{ padding: 0 }}>
           <Button variant="success" style={{ height: "100%", width: "100%" }}>
-            TRAVEL
+            Goals
           </Button>
         </Col>
         <Col style={{ padding: 0 }}>
           <Button variant="danger" style={{ height: "100%", width: "100%" }}>
-            RECOMMENDATION
+            About
           </Button>
         </Col>
       </Row>
@@ -38,8 +38,8 @@ function App() {
         className="text-center"
         style={{
           position: "absolute",
-          top: "250px",
-          right: "550px",
+          top: "35vh",
+          right: "80vh",
           width: "400px",
         }}
       >
