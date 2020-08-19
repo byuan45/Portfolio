@@ -1,20 +1,51 @@
 import React from "react";
 import "./App.css";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import Email from "./icons/email.svg";
+import Facebook from "./icons/facebook.svg";
+import LinkedIn from "./icons/linkedin.svg";
+import Instagram from "./icons/instagram.svg";
+
 function App() {
   return (
     <Container fluid style={{ margin: 0, padding: 0 }}>
+      <style type="text/css">
+        {`
+    .btn-travel {
+      background-color: #2a9d8f;
+      color: white;
+    }
+    .btn-Goals {
+      background-color: #e76f51;
+      color: white;
+    }
+    .btn-About {
+      background-color: #264653;
+      color: white;
+    }
+    .btn-Recommendations {
+      background-color: #f4a261;
+      color: white;
+    }
+    `}
+      </style>
       <Row
         noGutters={false}
         style={{ height: "50vh", width: "100%", margin: 0 }}
       >
         <Col style={{ padding: 0 }}>
-          <Button variant="primary" style={{ height: "100%", width: "100%" }}>
+          <Button
+            variant="travel"
+            style={{ height: "100%", width: "100%", background_color: "red" }}
+          >
             Travel
           </Button>
         </Col>
         <Col style={{ padding: 0 }}>
-          <Button variant="secondary" style={{ height: "100%", width: "100%" }}>
+          <Button
+            variant="Recommendations"
+            style={{ height: "100%", width: "100%" }}
+          >
             Recommendation
           </Button>
         </Col>
@@ -24,12 +55,12 @@ function App() {
         style={{ height: "50vh", width: "100%", margin: 0 }}
       >
         <Col style={{ padding: 0 }}>
-          <Button variant="success" style={{ height: "100%", width: "100%" }}>
+          <Button variant="Goals" style={{ height: "100%", width: "100%" }}>
             Goals
           </Button>
         </Col>
         <Col style={{ padding: 0 }}>
-          <Button variant="danger" style={{ height: "100%", width: "100%" }}>
+          <Button variant="About" style={{ height: "100%", width: "100%" }}>
             About
           </Button>
         </Col>
@@ -48,11 +79,33 @@ function App() {
           <Card.Text>
             I'm a graduating CS major at Georgia Tech. I wanted to create a
             unique portfolio to display who I am, what I want to do, and how
-            I'll accomplish my goals
+            I'll accomplish my goals. Thanks for checking it out!
           </Card.Text>
-          <Card.Link href="#">Insta</Card.Link>
-          <Card.Link href="#">LinkedIn</Card.Link>
-          <Card.Link href="#">FB</Card.Link>
+          <Card.Link href="#">
+            {" "}
+            <img style={{ height: "24px" }} src={Email} alt="Email Logo" />
+          </Card.Link>
+          <Card.Link href="#">
+            <img
+              style={{ height: "24px" }}
+              src={Facebook}
+              alt="Facebook Logo"
+            />
+          </Card.Link>
+          <Card.Link href="#">
+            <img
+              style={{ height: "24px" }}
+              src={LinkedIn}
+              alt="LinkedIn Logo"
+            />
+          </Card.Link>
+          <Card.Link href="#">
+            <img
+              style={{ height: "24px" }}
+              src={Instagram}
+              alt="Instagram Logo"
+            />
+          </Card.Link>
         </Card.Body>
       </Card>
     </Container>
