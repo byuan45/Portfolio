@@ -1,63 +1,94 @@
 import React, { memo } from "react";
-import {
-  ZoomableGroup,
-  ComposableMap,
-  Geographies,
-  Geography
-} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { Carousel } from "react-bootstrap";
+import First from "../travelImages/Antarctica/first.jpg";
+import Second from "../travelImages/Antarctica/second.jpg";
+import Third from "../travelImages/Antarctica/third.jpg";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const rounded = num => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
-
+const highlighted = ["LBR", "RUS"];
 const Travel = ({ setTooltipContent }) => {
   return (
-    <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
-        <ZoomableGroup>
-          <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              geographies.map(geo => (
+    <div>
+      <h1>Intresting Title</h1>
+      <p>Random paragraph</p>
+
+      <ComposableMap
+        viewBox="10 30 150 60"
+        data-tip=""
+        width={150}
+        height={120}
+        projectionConfig={{ scale: 20 }}
+      >
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map((geo) => {
+              const isHighlighted =
+                highlighted.indexOf(geo.properties.ISO_A3) !== -1;
+              return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  fill={isHighlighted ? "red" : "grey"}
                   onMouseEnter={() => {
-                    const { NAME, POP_EST } = geo.properties;
-                    setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
+                    const { NAME } = geo.properties;
+                    setTooltipContent(`${NAME}`);
                   }}
+                  onClick={() => console.log(geo.properties.ISO_A3)}
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
                   style={{
                     default: {
-                      fill: "#D6D6DA",
-                      outline: "none"
+                      outline: "none",
                     },
                     hover: {
-                      fill: "#F53",
-                      outline: "none"
+                      fill: "blue",
+                      outline: "none",
                     },
                     pressed: {
-                      fill: "#E42",
-                      outline: "none"
-                    }
+                      outline: "none",
+                    },
                   }}
                 />
-              ))
-            }
-          </Geographies>
-        </ZoomableGroup>
+              );
+            })
+          }
+        </Geographies>
       </ComposableMap>
-    </>
+
+      <Carousel
+       style={{ height: "500px", width: "500px", margin: 0 }}
+      >
+        <Carousel.Item>
+          <img className="d-block w-100" src={First} alt="First slide" />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={Second} alt="Third slide" />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={Third} alt="Third slide" />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
   );
 };
 
